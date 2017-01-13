@@ -20,9 +20,7 @@ if(rs.next()){
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
-								<img class="img-circle"
-								src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
-								alt="User Pic">
+								<img class="img-circle"	src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" alt="User Pic">
 							</div>
 							<div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
 								<img class="img-circle"
@@ -59,34 +57,33 @@ if(rs.next()){
 							</div>
 						</div>
 					</div>
-					<div class="panel-footer">
-						<button class="btn btn-sm btn-primary" type="button"
-						data-toggle="tooltip"
-						data-original-title="Send message to user">
-						<i class="glyphicon glyphicon-envelope"></i>
-					</button>
-
-					<div class="pull-right">
-						<a href="#">
-							<button class="btn btn-sm btn-warning" type="button"
-							data-toggle="tooltip"
-							data-original-title="Edit this user">
-							<i class="glyphicon glyphicon-edit"></i>
-							Update
-						</button>
-					</a>
-					
+					<div class="panel-footer">						
+						<button class="btn btn-sm btn-primary" id="btn-back">Back</button>
+						<div class="pull-right">
+							<a href="updateprofile.jsp">
+								<button class="btn btn-sm btn-warning" type="button">
+									<i class="glyphicon glyphicon-edit"></i>Update
+								</button>
+							</a>					
+						</div>
+						<%if(request.getParameter("msg")!=null){%>
+						<div class="form-group">
+							<label for="" class="error-msg"><%=request.getParameter("msg")%></label>
+						</div>
+						<%}%>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-</div>
-</div>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#btn-back').click(function(){
+			parent.history.back();
+		});
+	});
+</script>
 <%}%>
 
 
