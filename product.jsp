@@ -24,7 +24,7 @@
 						</div>
 						<div class="rating hidden-sm col-md-6">
 							<h5 class="price-text-color">Rp. <%=rs.getString("price")%>,-</h5>
-							<h5><a href="review.jsp">View Review</a></h5>
+							<h5><a href="review.jsp?id=<%= rs.getString("productid")%>">View Review</a></h5>
 						</div>
 					</div>
 					<div class="separator clear-left">
