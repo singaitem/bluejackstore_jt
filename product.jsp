@@ -41,12 +41,10 @@
 							</p>
 						</form>
 						<%}else if(session.getAttribute("role").equals("admin")){%>
-						<form action="controller/updateproduct.jsp">
-							<p class="btn-add">
-								<i class="fa fa-shopping-cart"></i>
-								<button class="btn btn-default" type="submit">Update Product</button>
-							</p>
-						</form>
+							<div style="margin-top: 10px;text-align: center;">
+								<a href="updateproduct.jsp?id=<%=rs.getString("idproduct")%>" class="btn btn-default">Update Product</a>
+							</div>
+							
 						<%}%>				
 					</div>
 					

@@ -32,6 +32,9 @@
 						if(session.getAttribute("role")!=null){
 					%>
 					<li><a href="product.jsp">Product</a></li>
+					<%if(session.getAttribute("role").equals("admin")){%>
+					<li><a href="addproduct.jsp">Add Product</a></li>
+					<%}%>
 					<li><a href="transaction.jsp">Transaction</a></li>
 					<li><a href="member.jsp">Member</a></li>
 					<%}%>
