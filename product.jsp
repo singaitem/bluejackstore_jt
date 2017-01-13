@@ -3,17 +3,17 @@
 	<h1 style="text-align: center;">Product</h1>
 	<div class="row">
 		<%
-			String query="select * from msproducts";
-			ResultSet rs = st.executeQuery(query);
-			while(rs.next()){
+		String query="select * from msproducts";
+		ResultSet rs = st.executeQuery(query);
+		while(rs.next()){
 		%>
 		<div class="col-xs-12 col-sm-6 col-md-3" style="margin-top: 10px;">
 			<div class="col-item">
 				<div class="post-img-content">
 					<img src="public/images/<%=rs.getString("image")%>" class="img-control" />
 					<span class="post-title">
-                        <b>PR00<%=rs.getString("productid")%></b>
-                    </span>
+						<b>PR00<%=rs.getString("idproduct")%></b>
+					</span>
 				</div>
 				<div class="info">
 					<div class="row">
@@ -27,15 +27,29 @@
 							<h5><a href="review.jsp?id=<%= rs.getString("productid")%>">View Review</a></h5>
 						</div>
 					</div>
+					
 					<div class="separator clear-left">
-						<p class="btn-details">
-							<input type="number" class="form-control" min="1" value="1" max="<%=rs.getString("stock")%>">
-						</p>
-						<p class="btn-add">
-							<i class="fa fa-shopping-cart"></i>
-							<button href="#" class="btn btn-default">Add to cart</button>
-						</p>				
+						<%if(session.getAttribute("role").equals("member")){%>
+						<form action="controller/addtocart.jsp" method="post">
+							<input type="hidden" name="idproduct" value="<%=rs.getString("idproduct")%>">
+							<p class="btn-details">
+								<input type="number" name="quantity" class="form-control" min="1" value="1" max="<%=rs.getString("stock")%>">
+							</p>
+							<p class="btn-add">
+								<i class="fa fa-shopping-cart"></i>
+								<button class="btn btn-default" type="submit">Add to cart</button>
+							</p>
+						</form>
+						<%}else if(session.getAttribute("role").equals("admin")){%>
+						<form action="controller/updateproduct.jsp">
+							<p class="btn-add">
+								<i class="fa fa-shopping-cart"></i>
+								<button class="btn btn-default" type="submit">Update Product</button>
+							</p>
+						</form>
+						<%}%>				
 					</div>
+					
 					<div class="clearfix"></div>
 				</div>
 			</div>
