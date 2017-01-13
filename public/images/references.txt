@@ -1,1 +1,7 @@
 banner | https://www.canva.com/
+images1 | http://compass.microsoft.com/assets/4b/d0/4bd0d69b-f194-4364-b5f7-d7bc95e795bc.jpg?n=mk_ambi_blk_large.jpg
+images2 | http://assets.razerzone.com/eeimages/products/22212/razer-blackwidow-ultimate-classic-gallery-1__store_gallery.png
+images3 | http://i.imgur.com/cqXgRSR.jpg
+images4 | http://id-live-02.slatic.net/p/7/consina-celana-panjang-bonifacio-8770-9887488-86c9a86c8266457a8264e604b4b08c6c.jpg
+images5 | https://images-na.ssl-images-amazon.com/images/I/81Qvsxp0nyL._SL1500_.jpg
+images6 | http://www.ikea.com/my/ms/images/products/bjursta-meja-boleh-dipanjangkan-coklat__0106121_PE253940_S4.JPG
