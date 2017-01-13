@@ -6,7 +6,7 @@
 	String query="select * from msusers where email = '"+email+"' and password = '"+password+"'";
 	ResultSet validlogin = st.executeQuery(query);
 	if(validlogin.next()){
-		session.setAttribute("role","member");
+		session.setAttribute("role",validlogin.getString("role"));
 		session.setAttribute("iduser",validlogin.getString("iduser"));
 		session.setAttribute("fullname",validlogin.getString("fullname"));
 		if(application.getAttribute("ol")==null){
