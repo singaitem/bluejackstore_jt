@@ -17,7 +17,7 @@
 	<%@include file="connect/connect.jsp"%>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 20px">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -49,7 +49,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=session.getAttribute("fullname")%><span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="updateprofile.jsp">Update Profile</a></li>
+							<li><a href="viewprofile.jsp">Update Profile</a></li>
 						</ul>
 					</li>
 					<li><a href="controller/logout.jsp">Logout</a></li>
