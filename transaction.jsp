@@ -3,10 +3,16 @@
 	<h1 style="text-align: center;">Transactions</h1>
 	<div class="row">
 		<%
+		int limit = 5;
+		int offset=0;
 		String query="select * from trtransactions trt , msusers msu where trt.iduser = msu.iduser";
 		if(session.getAttribute("role").equals("member")){
 			query+=" and trt.iduser = "+session.getAttribute("iduser");
 		}
+		if(request.getParameter("page")!=null){
+			offset = (Integer.parseInt(request.getParameter("page"))-1)*limit;
+		}
+		query+=" limit "+limit+" offset "+offset;
 		System.out.println(session.getAttribute("role"));
 		ResultSet rs = st.executeQuery(query);
 		while(rs.next()){
@@ -66,6 +72,58 @@
 			</div>
 		</div>
 		<%}%>
+		<div class="col-md-12 text-center">
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<%if(offset!=0){%>
+					<li>
+						<a href="transaction.jsp?page=<%=Integer.parseInt(request.getParameter("page"))-1%>" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<%}%>
+					<%
+						String query2="select count(idtransaction)'count' from trtransactions trt , msusers msu where trt.iduser = msu.iduser";
+						if(session.getAttribute("role").equals("member")){
+							query+=" and trt.iduser = "+session.getAttribute("iduser");
+						}
+						ResultSet counter = stmt.executeQuery(query2);
+						int total = 0;
+						boolean last = false;
+						int current =0;
+						if(counter.next()){
+							total=Integer.parseInt(counter.getString("count"));
+						}
+						if(total%limit!=0){
+							total/=limit;
+							total+=1;
+						}else{
+							total/=limit;
+						}
+						if(request.getParameter("page")!=null){
+							if(Integer.parseInt(request.getParameter("page"))==total){
+								last=true;
+							}
+							current=Integer.parseInt(request.getParameter("page"));
+						}else{
+							if(total==1){
+								last=true;
+							}
+						}
+						for(int i=0;i<total;i++){
+					%>
+					<li><a href="transaction.jsp?page=<%=i+1%>"><%=i+1%></a></li>
+					<%}%>
+					<%if(last==false){%>
+					<li>
+						<a href="transaction.jsp?page=<%=current+1%>" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+					<%}%>
+				</ul>
+			</nav>
+		</div>
 	</div>
 </div>
 <%@include file="footer.jsp"%>
