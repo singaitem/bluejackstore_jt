@@ -2,7 +2,7 @@
 
 
 <%
-    String query = "select * from msreview a join msproducts b on a.idproduct = b.productid where idproduct = " + request.getParameter("id");
+    String query = "select * from msreview a join msproducts b on a.idproduct = b.idproduct where a.idproduct = " + request.getParameter("id");
     ResultSet rs = st.executeQuery(query);
     if(rs.next()){
 %>
@@ -26,7 +26,7 @@
                   <div class="actionBox">
                     <ul class="commentList">
                         <%
-                            query = "select * from msreview a join msusers b on a.iduser = b.iduser where idproduct = " + rs.getString("productid");
+                            query = "select * from msreview a join msusers b on a.iduser = b.iduser where idproduct = " + rs.getString("idproduct");
                             ResultSet rs2 = stmt.executeQuery(query);
                             while(rs2.next()){
 
@@ -39,10 +39,10 @@
                                 <p class=""><%= rs2.getString("review")%></p> <span class="date sub-text">rate : <%= rs2.getString("rate") %></span>
                                 <% if(rs2.getString("iduser").equals(session.getAttribute("iduser"))){%>
                                     <div class="pull-right">
-                                        <a href="editreview.jsp?id=<%=rs.getString("productid")%>&idreview=<%= rs2.getString("idreview")%>">
+                                        <a href="editreview.jsp?id=<%=rs.getString("idproduct")%>&idreview=<%= rs2.getString("idreview")%>">
                                             <button class="btn btn-primary">Edit</button>
                                         </a>
-                                        <a href="controller/deletereview.jsp?id=<%=rs2.getString("idreview")%>&idproduct=<%= rs.getString("productid")%>">
+                                        <a href="controller/deletereview.jsp?id=<%=rs2.getString("idreview")%>&idproduct=<%= rs.getString("idproduct")%>">
                                             <button class="btn btn-danger" onclick="return confirm('are you sure ?')">Delete</button></div>
                                         </a>                                        
                                     </div>
